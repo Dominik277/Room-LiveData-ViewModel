@@ -29,6 +29,34 @@ public class AddTastActivity extends AppCompatActivity {
                 saveTask();
             }
         });
+    }
+
+    private void saveTask(){
+
+        final String sTask = editTextTask.getText().toString().trim();
+        final String sDesc = editTextTask.getText().toString().trim();
+        final String sFinishBy = editTextTask.getText().toString().trim();
+
+        if (sTask.isEmpty()){
+            editTextTask.setError("Task required");
+            editTextTask.requestFocus();
+            return;
+        }
+
+        if (sDesc.isEmpty()){
+            editTextTask.setError("Desc required");
+            editTextTask.requestFocus();
+            return;
+        }
+
+        if (sFinishBy.isEmpty()){
+            editTextTask.setError("Finish by required");
+            editTextTask.requestFocus();
+            return;
+        }
+
+
 
     }
+
 }
