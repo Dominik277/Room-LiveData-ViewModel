@@ -2,6 +2,7 @@ package room.database;
 
 import java.io.Serializable;
 import androidx.room.ColumnInfo;
+import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 //ova klasa predstavlja entity, a entity nam zapravo u bazi podataka predsavlja
@@ -25,6 +26,8 @@ import androidx.room.PrimaryKey;
 //                      vrijednost izvan klase u kojoj se oni nalaze, a to je uvijek bolje
 //                      napraviti preko metoda nego direktno preko atributa jer tada korisnik
 //                      moze lako promjeniti njihovu vrijednost i pokvariti cijeli program
+
+@Entity
 public class Task implements Serializable {
 
 
