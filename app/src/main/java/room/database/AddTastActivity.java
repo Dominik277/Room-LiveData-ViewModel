@@ -145,9 +145,18 @@ public class AddTastActivity extends AppCompatActivity {
             return;
         }
 
+
+        //AsyncTask je abstraktna klasa koja nam omogucava radnju teskih operacija u background thread-u i zbog toga
+        //omogucava da UI thread bude neopterecen, a upravo ta neopterecenost UI thread-a osigurava da aplikacija bude
+        //brza.Znaci ukratko AsyncTask klasa nam omogucava rad teskih zadataka u backgroundu kako bi oslobodili main UI
+        //thread te po zavrsetku odrađivanja zadatka u background thread-u podaci se salju u main UI thread
     class SaveTask extends AsyncTask<Void,Void,Void>{
 
 
+            //doInBackground() metoda je glavna metoda unutar AsyncTask klase unutar koje se navode svi oni zadaci
+            //koji se trebaju izvrsiti unutar background thread-a.Kako bi obavijestili da je background zadatak
+            //obavljen moramo navesti return statement.Operacije koje se odvijaju unutar ove metode ne mogu nikako
+            //doci u doticaj s UI thread-om.
         @Override
         protected Void doInBackground(Void... voids) {
 
@@ -164,6 +173,10 @@ public class AddTastActivity extends AppCompatActivity {
             return null;
         }
 
+        //ova metoda se poziva na main UI thread nakon sto su izvrsene sve operacije unutar doInBackground() metode.
+        //rezultati koji se dobiju unutar doInBackground() metode se prosljleđuju ovoj metodi kao parametar i nakon
+        //toga ova metoda salje podatke koje je dobila od doInBackground() metode u main UI thread te se main UI
+        //thread azurira i promjena podataka nam je vidljiva
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
