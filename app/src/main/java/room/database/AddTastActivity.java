@@ -192,12 +192,15 @@ public class AddTastActivity extends AppCompatActivity {
             task.setFinished(false);
 
 
+            //u ovom koraku smo spremili podatke u bazu podataka, spremili smo podatke unutar baze
+            //pomocu metode insert() koju smo definirali u TaskDao interfejsu i predali joj kao
+            //parametar objekt
             //getInstance() -->
-            //getApplication() --> vraća aplikaciju koja sadržava trenutni activity
+            //getApplicationContext() -->
             //getAppDatabase() -->
             //taskDao() -->
             //insert() -->
-            DatabaseClient.getInstance(getApplication()).getAppDatabase()
+            DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
                     .taskDao()
                     .insert(task);
 
