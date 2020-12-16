@@ -2,12 +2,11 @@ package room.database;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,20 +15,35 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
     private Context mCtx;
     private List<Task> taskList;
 
+    public TasksAdapter(Context mCtx,List<Task> taskList){
+        this.mCtx = mCtx;
+        this.taskList = taskList;
+    }
+
     @NonNull
     @Override
     public TasksAdapter.TasksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_tasks,parent,false);
+        return new TasksViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TasksAdapter.TasksViewHolder holder, int position) {
+        Task t = taskList.get(position);
+        holder.textViewTask.setText(t.getTask());
+        holder.textViewDesc.setText(t.getDesc());
+        holder.textViewFinishBy.setText(t.getFinishBy());
 
+        if (t.isFinished()){
+            holder.textViewStatus.setText("Completed!");
+        }else {
+            holder.textViewStatus.setText("Not completed!");
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return taskList.size();
     }
 
     class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
