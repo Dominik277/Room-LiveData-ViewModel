@@ -160,12 +160,43 @@ public class AddTastActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
 
+            //ovdje smo na desnoj strani napravili objekt u memoriji racunala tipa Task,a na lijevoj strani smo
+            //samo naveli preko kojeg imena cemo ga referencirati.Task klasa je POJO klasa u kojoj se nalaze svi
+            //glavni podaci vezani za aplikaciju te getteri i setteri kako bi mogli pristupiti ili mijenjati te
+            //podatke
             Task task = new Task();
+
+            //kako bi pristupili metodama koje se nalaze unutar Task klase moramo napraviti objekt od te klase,
+            //sto smo i napravili u koraku iznad.U nasem slucaju trebamo pristupiti setterima uz klase Task.
+            //kako bi nam ovo bilo sto lakse zamislimo to na sljedeci nacin = imamo POJO klasu unutar koje se
+            //nalaze svi atributi koji su nam potrebni za aplikaciju, ali svi ti atributi su prazni, nemaju
+            //nikakvu vrijednost u sebi i sada mi preko settera njima dajemo nekakvu vrijednost, a tu vrijednost
+            //koju mu zelimo dati moramo napisati u parametar od settera, a te vrijednosti koje mu zelimo dati su
+            //one koje je korisnik unio unutar određenog editTexta-a
+            //
+            //setTask(sTask) --> ova metoda sluzi kako bi dali vrijednost atributu task unutar Task klase
+            //                   radi na nacin da koju god zelimo vrijednost predati task atributu, tu vrijednost
+            //                   predamo kao parametar setter-u (parametar u nasem slucaju mora biti tipa String)
+            //setDesc(sDesc) --> ova metoda sluzi kako bi dali vrijednost atributu desc unutar Task klase
+            //                   radi na nacin da koju god zelimo vrijednost predati desc atributu, tu vrijednost
+            //                   predamo kao parametar setter-u (parametar u nasem slucaju mora biti tipa String)
+            //setFinishBy(sFinishBy) --> ova metoda sluzi kako bi dali vrijednost atributu finishBy unutar Task klase
+            //                           radi na nacin da koju god zelimo vrijednost predati finishBy atributu, tu vrijednost
+            //                           predamo kao parametar setter-u (parametar u nasem slucaju mora biti tipa String)
+            //setFinished(false) --> ova metoda sluzi kako bi dali vrijednost atributu finished unutar Task klase
+            //                       radi na nacin da koju god zelimo vrijdnost predati finished atributu, tu vrijednost
+            //                       predajemo kao parmeter settet-u (parametar u nasem slucaju mora biti tipa boolean)
             task.setTask(sTask);
             task.setDesc(sDesc);
             task.setFinishBy(sFinishBy);
             task.setFinished(false);
 
+
+            //getInstance() -->
+            //getApplication() --> vraća aplikaciju koja sadržava trenutni activity
+            //getAppDatabase() -->
+            //taskDao() -->
+            //insert() -->
             DatabaseClient.getInstance(getApplication()).getAppDatabase()
                     .taskDao()
                     .insert(task);
@@ -180,13 +211,37 @@ public class AddTastActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+
+            //ova metoda se poziva kada je activity zavrsen i treba se zatvoriti
+            //kada zovemo metodu finish() obavalja se također i metoda onDestroy()
+            //kada pozovemo metodu finish() slijedom se pozivaju sljedece metode
+            //1.onPause(), 2.onStop(), 3.onDestroy()
             finish();
+
+            //
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
+            //ova linija koda nam govori da ce na dnu ekrana biti prikazana mala Toast poruka
+            //makeText() --> ova metoda se poziva kada zelimo prikazati standardan Toast text
+            //               1.parametar je da predajemo kontext od aplikacije
+            //               2.parametar je da predajemo text koji zelimo ispisati na dnu ekrana
+            //               3.parametar je da određujemo koliko dugo zelimo da ta poruka bude ispisana
+            //show() --> sve ovo prije sto smo napravili je bilo samo određivanje sto,kako i koliko ce
+            //           se ispisivati Toast poruka, ova metod nam omogucava da se Toast poruka prikaze
+            //           bez ove metode nista ovo ispred nam ne bi vrijedilo
             Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_LONG).show();
             }
         }
 
+        //ovdje smo napravili objekt klase SaveTask te na lijevo strani referencirali
+        //preko kojeg imena cemo ga zvati
         SaveTask st = new SaveTask();
+
+        //execute() --> kada smo gotovi sa definiranjem zadatka, mi zapravo nismo jos nista upogonili
+        //              jedino cemo upogoniti kada pozovemo metodu execute(), a kako bi ju upogonili
+        //              moramo napraviti objekt one klase u kojoj smo definirali background thread i na
+        //              taj objekt pozvati execute() metodu koja ce to sve pokrenuti sto smo prije
+        //              definirali
         st.execute();
 
     }
