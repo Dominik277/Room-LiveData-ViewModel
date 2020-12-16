@@ -45,7 +45,14 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
     @Override
     public TasksAdapter.TasksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        //
+        //napravili smo varijablu view tipa View u koju pohranjujemo ono sto se obradi s desne strane
+        //View je osnovna klasa zaduzena za sve UI komponente ili "widgete", a to su button,TextView,EditView...
+        //ViewGroup je je podklasa View klase koja je zaduzena za layout-e, a layout-e mozemo zamisliti kao
+        //nekakav kontejner koji u sebi sadrzi mnogo drugih View-ova koju se poslagani po nekom redosljedu
+        //LayoutInflater --> uloga LayoutInflatera je da uzima layout iz XML-a i od njih pravi Java
+        //                   objekte tipa View, znaci cijeli layout pretvori u Java objekt tipa View
+        //inflate --> pomocu ove metode smo deklarirali koji view cemo pohraniti u objekt view tipa View
+        //            u nasem slucaju to je recyclerview_task
         View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_tasks,parent,false);
         return new TasksViewHolder(view);
     }
@@ -60,11 +67,28 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
     //position --> pozicija jednog retka unutar adapterovih podataka
     @Override
     public void onBindViewHolder(@NonNull TasksAdapter.TasksViewHolder holder, int position) {
+
+        //na lijevoj strani smo kreirali varijablu t tipa Task u koju spremamo sve s desne strane
+        //taskList --> taskList nam je objekt tipa List u koji spremamo podatke tipa Task
+        //get() --> ova metoda je tipa int pa onda ona vraca broj koji predstavlja poziciju
+        //          u listi
+        //position --> ovaj parametar tipa int nam predstavlja redni broj tog item-a koji se nalazi
+        //             u RecyclerView-u
+        //holder --> holder nam predstavlja ViewHolder koji bi trebao biti azuriran kada god se novi
+        //           redak prikaze na ekranu na tocno određenoj poziciji unutar neke kolekcije podataka
+        //           koja je određena parametrom positio
+        //setText() --> ova metoda se poziva na objekte tipa TextView te ona postavlja tekst koji ce biti
+        //              prikazan na pojedinom TextView-u.U nasem slucaju posto su kao parametri ove metode
+        //              prilozeni getteri oni vracaju vrijednost atributa Task klase,a svi atributi task
+        //              klase su tipa string, tako da ce oni ispisivati text
         Task t = taskList.get(position);
         holder.textViewTask.setText(t.getTask());
         holder.textViewDesc.setText(t.getDesc());
         holder.textViewFinishBy.setText(t.getFinishBy());
 
+        //ako atribut isFinished iz klase Task koji je tipa boolean ima vrijednost true onda se
+        //izvrsava dio koda unutar if() bloka, u suprotnom slucaju, ako taj atribut ima vrijednost
+        //false onda se izvrsava dio koda unutar else bloka
         if (t.isFinished()){
             holder.textViewStatus.setText("Completed!");
         }else {
@@ -115,6 +139,10 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
             textViewDesc = itemView.findViewById(R.id.textViewDesc);
             textViewStatus = itemView.findViewById(R.id.textViewStatus);
 
+
+            //ova metoda se poziva kada je itemView kliknut, ako smo u XML-u definirali da
+            //ovaj itemView nije "clickable" onda kada na njega pozovemo ovu metodu onda
+            //on postaje "clickable"
             itemView.setOnClickListener(this);
         }
 
