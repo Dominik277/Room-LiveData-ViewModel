@@ -1,5 +1,6 @@
 package room.database;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,16 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
         return 0;
     }
 
+    class TasksViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        public TasksViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+        }
+    }
 
 }
