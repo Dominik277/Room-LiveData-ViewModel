@@ -102,6 +102,13 @@ public class MainMainActivity extends AppCompatActivity {
                 recyclerView.setAdapter(adapter);
             }
         }
+
+        //sve prije ovog koraka je bilo definiranje zadatka,mozemo zamisliti kao zadatak kojem je određeno
+        //sve sto treba raditi, kada treba raditi, koliko treba raditi i gdje treba raditi jedino mu jos
+        //fali nesto da ga upogoni, da ga pusti u pogon, upravo to radi execute() metoda
+        //prvo moramo stvoriti objekt od klase unutar koje smo definirali background zadatke, taj objekt se
+        //zove gt i preko njega mozemo pozvati metodu execute koja je zasluzna da pusti u pogon sve ove metode
+        //koje smo definirali gore te da one napokon mogu poceti izvrsavati svoje zadatke
         GetTasks gt = new GetTasks();
         gt.execute();
     }
