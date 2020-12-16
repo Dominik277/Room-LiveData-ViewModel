@@ -146,12 +146,34 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
             itemView.setOnClickListener(this);
         }
 
+        //onClick() metoda se poziva kada je neki View kliknut, odnosno kada je neki View
+        //kliknut izvrsava se dio koda koji je naveden unutar onClik() metode.Parametar
+        //ove metode nam predstavlja onaj View koji je kliknut
         @Override
         public void onClick(View v) {
 
+            //Na lijevoj strani smo napravili lokalnu varijablu task u koju cemo pohraniti
+            //sve ono sto nam se odvija s desne strane
+            //taskList --> ovaj objekt je tipa List u koji se mogu pohranjivati samo vrijednosti
+            //             tipa Task
+            //get() --> ova metoda vraca element s tocno određene pozicije u listi, a kako bi znala
+            //          koji element treba vratiti kao parametar joj moramo priloziti tip int kako
+            //          ona znala tocno koji element vratiti
+            //getAdapterPosition() --> ova metoda vraca poziciju adaptera item reprezentiranog sa
+            //                         ViewHolderom
             Task task = taskList.get(getAdapterPosition());
 
+            //na desnoj strani smo kreirali objekt u memoriji racunala tipa Intent, a na lijevoj strani
+            //smo samo rekli preko kojeg imena cemo ga dozivati iz memorije
+            //Intent mozemo zamisliti kao neku poruku koja se salje između activity-a, fragmenata,komponenti...
+            //Intent u androidu se najcesce koristi za pokretanje novog activity-a
+            //ovaj konstruktor stvara intent za intent objekt da prilikom klika na taj view koji je predan
+            //kao parametar onClick() metodi da seo otvori UpdateTaskActivity klasa
             Intent intent = new Intent(mCtx, UpdateTaskActivity.class);
+
+            //putExtra --> ova metoda daje jos neke dodatne podatke vezane uz intent otvaranja
+            //UpdateTaskActivity klase klikom na View v te joj kao drugi parametar prosljeđujemo
+            //i podatke koje treba poslati prilikom otvaranja novog activitiy-a
             intent.putExtra("task",task);
 
         }

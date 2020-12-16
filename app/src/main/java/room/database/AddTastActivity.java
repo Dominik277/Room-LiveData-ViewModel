@@ -222,7 +222,7 @@ public class AddTastActivity extends AppCompatActivity {
             finish();
 
             //
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(),MainMainActivity.class));
 
             //ova linija koda nam govori da ce na dnu ekrana biti prikazana mala Toast poruka
             //makeText() --> ova metoda se poziva kada zelimo prikazati standardan Toast text
