@@ -28,6 +28,12 @@
             android:text="Go Bring Eggs"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
         <TextView
+            android:id="@+id/textViewDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bring 6 eggs from supermarket"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+        <TextView
             android:id="@+id/textViewFinishBy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
