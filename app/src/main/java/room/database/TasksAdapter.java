@@ -26,21 +26,38 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
     private Context mCtx;
     private List<Task> taskList;
 
-    //ovo je nas cutom konstruktor koji sluzi kako bi instancirali objekt prilikom njegove kreacije
+    //ovo je nas custom konstruktor koji sluzi kako bi instancirali objekt prilikom njegove kreacije
     //odnosno sve vrijednosti koje zelimo da atributi nekog objekta imaju cemo predati kao argumente
-    //konstruktoru
+    //konstruktoru.Kao parametre prima context i listu objekata iz POJO klase Task, objekt te klase u
+    //sebi sadrzi sve informacije vezane za aplikaciju
     public TasksAdapter(Context mCtx,List<Task> taskList){
         this.mCtx = mCtx;
         this.taskList = taskList;
     }
 
+    //onCreateViewHolder metoda se poziva samo kada treba stvoriti novi ViewHolder kada ne postoji niti
+    //jedan ViewHolder koji RecyclerView moze reciklirati
+    // parent -->ovaj parametar nam zapravo predstavlja RecyclerView.parent je poslan u metodu samo zbog toga
+    //          kako bi mago biti predan LayoutInflater-u kako bi on mogao odraditi određene LayoutParams
+    //na inflatirani View
+    //viewType --> view tip "of the new View"
     @NonNull
     @Override
     public TasksAdapter.TasksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        //
         View view = LayoutInflater.from(mCtx).inflate(R.layout.recyclerview_tasks,parent,false);
         return new TasksViewHolder(view);
     }
 
+    //ova metoda nam sluzi kako bi prikazali sve podatke koje je adapter u sebe spremio u RecyclerView
+    //RecyclerView zove ovu metodu kako bi prikazao podatke na tocno određenoj poziciji, zbog toga kao
+    //parametar mu predajemo position da bi on tocno znao na kojoj poziciji treba prikazati podatke
+    //kada RecylcerView reciklira redke, svaki sljedeci redak koji je prikaze na screen-u je prazan, te se
+    //on mora popuniti podacima, a upravo to je zadaca ove metode
+    //holder -->ViewHolder koji bi trebao biti azuriran da predstavlja elemente jednog retka na posebno
+    //          određenoj poziciji uutar neke kolekcije podataka
+    //position --> pozicija jednog retka unutar adapterovih podataka
     @Override
     public void onBindViewHolder(@NonNull TasksAdapter.TasksViewHolder holder, int position) {
         Task t = taskList.get(position);
@@ -55,6 +72,10 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
         }
     }
 
+    //ova metoda bi trebala vratiti broj list item-a
+    //varijabla taskList je array i u nju smo spremili sve one vrijednosti koje smo naveli unutar
+    //POJO Task klase.Metoda lenght() izracunava koliko ima elemenata unutar taskList varijable
+    //i vraca ukupan broj elemenata jer je ova metoda tipa int
     @Override
     public int getItemCount() {
         return taskList.size();
@@ -72,8 +93,16 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
         TextView textViewDesc;
         TextView textViewFinishBy;
 
-        //custom konstruktor --> ????????
+        //custom konstruktor koji kao parametar prima varijablu itemView tipa View
         public TasksViewHolder(@NonNull View itemView) {
+
+            //ovdje smo uz pomoc kljucne rijeci super dozvali konstruktor od ViewHolder nadklase
+            //a nadklasa od ViewHolder je RecyclerView.ViewHolder
+            //poziv konstruktora od nadklase mora biti prva stvar u konstruktoru
+            //kada napisemo super() bez parametara onda se poziva default konstruktor nadklase
+            //kada napisemo super(...) s nekoliko parametara onda on trazi u nadklasi koji
+            //konstruktor se podudara, gledajuci na parametre, i onda ako se neki konstruktor
+            //podudara onda poziva njega.
             super(itemView);
 
             //ovdje dolazimo do dijela kada u ove varijable pohranjujemo neke podatke, a
