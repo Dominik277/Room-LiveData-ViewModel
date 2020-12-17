@@ -3,6 +3,18 @@
 ------------------
 MainMainActivity
 ------------------
+-Ova klasa je jako jednostavna.Kao i na pocetku svake klase prvo deklariramo varijable i tipove tih varijabli koje ce biti
+ prikazane za tu određenu aktivnost.U aktivnosti koju predstavlja ova klasa imamo u XML-u definirane RecyclerView i Floating
+ Action Button i upravo stvaramo varijable tih tipova kako bi ih mogli referencirati dalje u kodu.I sada dolazimo do toga
+ unutar onCreate() metode te pomocu metode findViewById() idemo u XML i pojedine View-ove pohranjujemo unutar objekata koje
+ smo prethodno deklarirali, u nasem slucaju to su recyclerview_tasks i buttonAddTask.Za RecyclerView postavljamo LayoutManager
+ koji nam sluzi kako bi odrerili kako ce RecyclerView biti poslozen, imamo LinearLayoutManager(u nasem slucaju),GridLayoutManager
+ i FrameLayoutManager.Nakon toga smo deklarirali clickListener za floatin action button, odnosno definirali smo sta ce se desiti
+ prilikom klika na njega.U nasem slucaju prilikom klika na floating action button se otvara novi activity pomocu objekta klase
+ Intent, a activity koji se otvara je AddTaskActivity.I na kraju imamo metodu getTask() koja sluzi kako bi otisla u bazu podataka
+ i dohvatila podatke koje smo trazili.Ova metoda također radi u background thread-u kako bi se oslobodio UI thread pomocu metoda
+ doInBackground() i onPostExecute().I isto također kao i u svakoj klasi kako bi upogonili sve sto smo deklarirali unutar klase
+ koja nasljeđuje AsyncTask moramo napraviti objekt te klase i pozvati metodu execute() preko tog objekta.
 
 ------------------
 AddTastActivity
