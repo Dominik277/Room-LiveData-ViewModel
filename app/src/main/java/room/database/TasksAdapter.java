@@ -134,9 +134,9 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
             //findViewById dohvacamo iz XML-a view-ove koje dohvatimo preko njihovih id-ova,
             //te ih spremamo u njihove odgovarajuce varijable onako kako smo naveli, na ovaj
             //nacin iz XML objekata stvaramo Java objekte
-            textViewStatus = itemView.findViewById(R.id.textViewStatus);
             textViewTask = itemView.findViewById(R.id.textViewTask);
             textViewDesc = itemView.findViewById(R.id.textViewDesc);
+            textViewFinishBy = itemView.findViewById(R.id.textViewFinishBy);
             textViewStatus = itemView.findViewById(R.id.textViewStatus);
 
 

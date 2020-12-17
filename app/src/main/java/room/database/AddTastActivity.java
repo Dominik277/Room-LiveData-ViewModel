@@ -19,11 +19,11 @@ public class AddTastActivity extends AppCompatActivity {
     private EditText editTextTask;
     private EditText editTextDesc;
     private EditText editTextFinishBy;
-    private Button button_save;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_task);
 
 
         //do ovog koraka sve te varijable koje smo deklarirali gore su bile
@@ -34,13 +34,12 @@ public class AddTastActivity extends AppCompatActivity {
         editTextTask = findViewById(R.id.editTextTask);
         editTextDesc = findViewById(R.id.editTextDesc);
         editTextFinishBy = findViewById(R.id.editTextFinishBy);
-        button_save = findViewById(R.id.button_save);
 
         //u XML-u smo također naveli i gumb kojem smo dali ime button_save te cemo
         //ga referencirati pomocu tog imena.Sljedeca linija koda nam govori da tom
         //gumbu dajemo nekakvu funkcionalnost, jos nismo naveli kakvu tocno funkcionalnost
         //ali to cemo navesti unutar setOnClickListener() metode
-        button_save.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_save).setOnClickListener(new View.OnClickListener() {
 
             //ovdje smo naveli koju tocno funkcionalnost ce imati gumb, i ta funkcionalnost je
             //da izvede neku radnju kad se na njega klikne.onClick() je metoda koja se odnosi

@@ -37,7 +37,7 @@ public class MainMainActivity extends AppCompatActivity {
         //metode findViewById().Ova metoda odlazi u XML i trazi view prema imenu koje
         //smo naveli kao parametar te metode.Odlazi u XML i gleda pod naredbom gdje se odreduje
         //id i ako nađe tamo taj view onda ga sprema u pripadajucu varijablu
-        buttonAddTask = findViewById(R.id.floatin_button_add);
+        buttonAddTask = findViewById(R.id.floating_button_add);
 
         //setOnClickListener() metoda nam govori da ce gumb imati nekakvu funkcionalnost,jos nismo
         //tocno naveli kakvu funkcionalnost, ali smo naveli da cu ju imati.U tijelu ove metode cemo
