@@ -31,7 +31,24 @@ AddTastActivity
 UpdateTaskActivity
 ------------------
 -Osim Main aktivnosti koja se prikazuje pri pokretanju aplikacije kao prvi prozor mi također imamo jos dvije aktivnosti, a to su
- AddTastActivity i UpdateTaskActivity.
+ AddTastActivity i UpdateTaskActivity.Pri otvaranju ove activity-a koji smo definirali ovom klasom cemo vidjeti naslov "Update Task"
+ tri EditText-a sa hintovima i dva gumba koji sluze za updejtanje i brisanje pojedinog podsjetnika.Kao i uvijek, na pocetku smo
+ deklarirali imena varijabli i kojih tipova su te varijable kako bi ih mogli referencirati u daljnjem toku programa.Nakon toga smo
+ tim varijabla dodjelili View-ove koji se nalaze u XML-u pomocu metode findViewById(), na taj način smo od XML view-ova stvorili
+ java objekte tipa View.Poslije toga smo svakom gumbu dali neku funkcionalnost.Gumbu za updejtanje smo dali funkcionalnost da kada se
+ klikne poziva se metoda updateTask koju cemo deklarirati u daljenjem kodu te nam se ispisuje Toast poruka na dnu ekrana sta smo tocno
+ kliknuli.Također smo dali funkcionalnost u delete gumbu koji osim sto poziva metodu deleteTask() koju cemo također deklarirati u sljedecih
+ par linija također nam izbacuje AlertDialog sa pozitivnim i negativnim gumbovima i naslovom "Are you sure".Nakon toga imamo metodu loadTask()
+ kojoj je zadaca da ucita podatke pomocu metode setText().Poslije toga dolazimo do metode updateTask().Prva stvar koju radimo unutar updateTask()
+ metode je da ono sto korisnik unese unutar EditTexta mi spremamo u varijeble (sTask,sDesc,sFinishBy) pomocu metoda getText() i toString().Nakon
+ smo napravili provjeru ako je korisnik kojim slucajem kliknuo dalje a da nije upisao tekst u polje onda mu se pokazuje mali crveni uslikcnik
+ sa popup porukom koja ga upozorava da je polje ostavio prazno i tako za sva tri polja.Nakon te provjere dolazi se do glavnog dijela ove metode
+ a to je updejtanje podataka unutar baze podataka a to se izvodi u background thread-u uz pomoc AsyncTask klase, ovu operaciju updejtanja baze
+ podatake moramo raditi u background threa-u jer kada bi ovo radili u main UI thread-u onda bi nam se aplikacija stalno crashala.Sav teski posao
+ se radi unutar metode doInBackground() i onda se rezultati koji su se izvrsili unutar te metode salji u onPostExecute() metodu koja ima mogucnost
+ azuriranja UI-a.Isto sve radimo i sa metodom deleteTask() koja se također izvodi u zasebnom background thread-u kako bi se osiguralo da
+ aplikacija brze radi i ne crasha se.I na kraju kako bi upogonili sve ovo gore sto smo napravili moramo kreirati objekt ove klase i preko njega
+ pozvati metodu execute().
 
 -----
 Task
