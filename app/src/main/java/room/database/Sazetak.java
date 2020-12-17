@@ -78,6 +78,20 @@ Task
 -------------
 TasksAdapter
 -------------
+-Ova klasa nam sluzi kao adapter za RecyclerView.Pri planiranju aplikacije odlucili smo da cemo podatke na ekranu prikazivati pomocu RecyclerView-a
+ Da bi podaci dosli do RecyclerView-a prvo moramo kreirati adapter koji to omogucava.Adapter također sluzi i za određivanje na koji nacin ce podaci
+ biti prikazani u RecyclerView-u.RecyclerView mozemo zamisliti kao manekenku u izlogu ciji je zadatak samo stajati i prikazivati tipa novu haljinu, a
+ adapter mozemo zamisliti kao njenog menađera koji se brine o tome sta ce ona obuci i na koji nacin ce stajati u izlogu.Znaci uloga adaptera je da
+ opskrbi RecylcerView sa podacima i kaze mu na koji nacin ce prikazivati podatke.Kao i na pocetku svakle klase deklarirali smo par varijabli tipa
+ Context i tipa List<Task>.Nakon toga smo kreirali custom konstruktor koji ce nam sluziti za instanciranje objekata.Posto smo klasu TasksAdapter
+ nasljedili od klase RecyclerView.Adapter klase moramo implementirati njene tri metode a to su onCreateViewHolder(),onBindViewHolder()i getItemCount().
+ onCreateViewHolder() se poziva samo kada nema stvoren niti jedan ViewHolder te se on stvori pomocu ove metode, onBindViewHolder() metoda sluzi kako bi
+ poslala sve podatke koje adapter u sebi ima prema RecyclerView-u na tocno određenoj pozicij, a zna o kojo se pozciji radi jer mu se kao parametar
+ predaje position.Kada novi RecylcerView dode na ekrana kada scrollamo taj adapter je prazan, u njemu nema podataka, a upravo ova metoda ce se
+ pobrinuti da podaci dodu u taj redak.getItemCount() metoda jednostavno sluzi kako bi vratila broj redaka u RecyclerView-u.Na kraju jos unutar ove
+ klase pravimo jos jednu inner(nested) klasu koja nasljeđuje RecyclerView.ViewHolder klasu.Ova klasa nam sluzi kako bi sadrzala sve one View-ove
+ koje jedan redak u RecaclerView-u ima.Također smo u nasem slucaju odredili da klikom na pojedini redak se otvara novi activity, a to je UpdateTaskActivity
+ pomocu objekta Intent klase.
 
 -------------
 AppDatabase

@@ -175,6 +175,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TasksViewHol
             //UpdateTaskActivity klase klikom na View v te joj kao drugi parametar prosljeđujemo
             //i podatke koje treba poslati prilikom otvaranja novog activitiy-a
             intent.putExtra("task",task);
+            mCtx.startActivity(intent);
 
         }
     }
