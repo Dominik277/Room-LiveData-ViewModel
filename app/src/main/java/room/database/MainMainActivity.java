@@ -30,7 +30,10 @@ public class MainMainActivity extends AppCompatActivity {
         //id i ako nađe tamo taj view onda ga sprema u pripadajucu varijablu
         recyclerView = findViewById(R.id.recyclerview_tasks);
 
-        //
+        //pomocu ove naredbe smo definirali kako ce nasi podaci unutar RecyclerView-a biti poslozeni
+        //postojalo je vise opcija:FrameLayoutManager,GridLayoutManager i LinearLayoutManager
+        //mi smo u nasem slucaju odabrali LinearLayoutManager koji podatke slace u vertikalne ili
+        //horizontalne linije
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //ovdje smo u buttonAddTask varijablu pohranili view koji se nalazi u XML-u pomocu
@@ -48,7 +51,18 @@ public class MainMainActivity extends AppCompatActivity {
             //izvrsi kada se klikne na gumb pišemo u tijelu ove metode.
             @Override
             public void onClick(View v) {
+
+                //objekt klase Intent nam sluzi za vise opcija, ali u nasem slucaju smo ga koristili za
+                //otvaranje novog activity-a klikom na gumb buttonAddTask
+                //kao prvi parametar navodimo klasu unutar koje se nalazi taj gumb koji cemo pritisnuti
+                //a kao drugi parametar pismo klasu ciji activity zelimo da se otvorili prilikom klika
+                //na gumb
                 Intent intent = new Intent(MainMainActivity.this,AddTastActivity.class);
+
+                //nakon sto smo deklarirali sve sto ce se dogoditi prilikom klika na gumb onda na kraju
+                //to jos sve moramo i upogoniti, a to radimo pomocu metode startActivity i kao argument
+                //mu predajemo objekt klase Intent koji u sebi sadrzi podatke koje smo mu predali preko
+                //konstruktora
                 startActivity(intent);
             }
         });
