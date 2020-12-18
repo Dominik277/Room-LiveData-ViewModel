@@ -223,9 +223,20 @@ public class UpdateTaskActivity extends AppCompatActivity {
         ut.execute();
     }
 
+    //ova metoda nam sluzi kako bi izbrisali neke podatke iz baze podataka, unutar ove metode imamo klasu DeleteTask
+    //koja nasljeđuje AsyncTask klasu koja je potrebna ako zelimo osigurati radu u background thread-u
     private void deleteTask(final Task task){
+
+        //ovo nam je klasa koja nasljeđuje AsyncTask kako bi mogli raditi u background thread-u, kada nasljeđujemo
+        //tu klasu postoji jedna metoda koju moramo obavezno implementirati a to je doInBackground() metoda unutar
+        //koje definiramo sav onaj rad koji zelimo obaviti unutar background thread-a.Postoje jos tri metode koje
+        //mozemo implementirati a to su onPostExecute(),onPreExecute() i onProgress().
         class DeleteTask extends AsyncTask<Void,Void,Void>{
 
+            //ovo je metoda kao sto sam vec naveo gore koja je zasluzna za obavljanje zadataka u backgroundu
+            //ova metoda je potrebna kako bi se teski zadaci odvojili od main UI thread-a i tamo se osiguralo
+            //da se aplikacija ne crasha.Unutar ove metode smo deklarirali da se obrisu podaci unutar baze podataka
+            //s pomocu delete() metode koja je definirana u Dao interfejsu
             @Override
             protected Void doInBackground(Void... voids) {
                 DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
@@ -234,6 +245,8 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 return null;
             }
 
+            //ovo je metoda koja dobiva rezultate od doInBackground() metode te sluzi za updejtanje UI thread-a,
+            //ova metoda također prikazuje toast poruku "Deleted" te se vraca u activity od MainMainActivity
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
@@ -242,6 +255,8 @@ public class UpdateTaskActivity extends AppCompatActivity {
                 startActivity(new Intent(UpdateTaskActivity.this,MainMainActivity.class));
             }
         }
+
+        //metoda execute() nam sluzi kako bi upogonili sve ono sto smo definirali iznad
         DeleteTask dt = new DeleteTask();
         dt.execute();
     }
