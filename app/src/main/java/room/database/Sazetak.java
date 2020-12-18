@@ -110,5 +110,13 @@ DatabaseClient
 ---------
 TaskDao
 ---------
+-Ovaj interfejs sadrzi abstraktne metode kojima je zadaca dohvacanje,azuriranje,brisanje i upisivanje podataka u bazu podataka.Ovakav nacin je puno
+ bolji i laksi i snazno se preporucuje u odnosu na standardni SQL query nacin.Ako zelimo imati neku metodu koja upisuje podatke unutar baze podataka
+ onda napravimo abstraktnu metodu jer se ona nalazi unutar interfejsa i iznad nje stavimo anotaciju @insert, compiler prepoznaje anotaciju i tocno zna
+ koja je zadaca ove metode.Isto tako ako zelimo imati metodu koja brise podatke iz baze podataka onda napravimo abstraktnu metodu sa anotacijom
+ @delete, ako zelimo azurirati tablicu onda napravimo abstraktnu klasu sa anotacijom @update.Također postoji i @Query anotacija pomocu koje mozemo
+ izvuci ili upisati tocno specificne podatke koje zelimo, npr.mozda zelimo obrisati korisnike u tablici koji su stariji od 34 godine
+
+
 
  */
