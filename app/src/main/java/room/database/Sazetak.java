@@ -96,6 +96,12 @@ TasksAdapter
 -------------
 AppDatabase
 -------------
+-ova abstraktna klasa je zaduzena za kreiranje baze podataka nase aplikacije, uvjeti koji moraju biti ispunjeni kako bi ova klasa bila kreator baze
+ podataka je da mora nasljeđivati RoomDatabase bazu podataka i da mora iznad deklaracije svoga imena imati anotaciju @Database.Unutar zagrade
+ pokraj anotacije @Database moramo definirati koje svi entiteti ce postojati unutar nase baze podataka (u nasem slucaju tablica Task) i jos moramo
+ definirati koja je ovo verzija baze podataka.Također ova klasa mora sadržavati abrstraktnu metodu sa 0 parametara i koja vraca klasu oznacenu sa
+ anotacijom @Dao.Dao metode se koriste kako bi dohvacale, azurirale, upisivale i brisale podatke iz baze podataka.Umjesto da se pise SQL query
+ naredbe cvrsto se podrzava koristenje Dao metoda kako bi se olaksao i ubrzao proces dohvacanja podataka iz baze podataka.
 
 ---------------
 DatabaseClient
