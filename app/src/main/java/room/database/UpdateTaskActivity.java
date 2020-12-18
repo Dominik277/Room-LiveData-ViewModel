@@ -107,59 +107,118 @@ public class UpdateTaskActivity extends AppCompatActivity {
 
     }
 
+    //ova metoda nam sluzi kako bi pohranili u editTextTask, editTextDesc, editTextFinishBy i checkBoxFinished
+    //vrijednosti koje su unesene pomocu gettera koje smo deklarirali unutar Task POJO klase
     private void loadTask(Task task){
+
+        //setText() --> ova metoda postavlja tekst koji treba biti prikazan
+        //kao parametar joj prilazemo getter metodu iz Task klase koju pozivamo preko objekata task klase Task
+        //metoda getTask vraca vrijednost koja je postavljenja u task atributu Task POJO klase i tako isto za
+        //ostale cetiri varijable
         editTextTask.setText(task.getTask());
         editTextDesc.setText(task.getDesc());
         editTextFinishBy.setText(task.getFinishBy());
         checkBoxFinished.setChecked(task.isFinished());
     }
 
+    //ova metoda nam sluzi kako bi azurirali podatke unutar baze podataka
     private void updateTask(final Task task){
 
+        //u naredna tri reda spremamo ono sto je korisnik unio u EditText-ove u varijable koje smo deklarirali
+        //s određenim View-ima.Znaci ono sto korisnik unese u prvo polje, a to prvo polje nam je editTextTask se
+        //sprema u final varijablu sTask,tako isto i za sDesc i sFinishBy.Metoda koja vraca ono sto je korisnik
+        //unio u određeni EditText je getText() metoda,tu je jos i toString() metoda koja vraca tekstualni zapis
+        //objekta i jos imamo trim() metodu koja je zasluzna za to da se brisu razmaci bili oni na kraju ili
+        //pocetku recenice, ali one razmake između rijeci ne brise
         final String sTask = editTextTask.getText().toString().trim();
         final String sDesc = editTextDesc.getText().toString().trim();
         final String sFinishBy = editTextFinishBy.getText().toString().trim();
 
+        //nakon sto smo odredili varijable u koje ce se spremati ono sto je korisnik unio moramo odrediti i sta ce
+        //se desiti ako korisnik ne unese nikakav tekst u EditText, a klikne dalje.Upravo to radimo u sljedecim koracima
+        //u ovom prvom slucaju se provjerava ako je korisnik kliknuo dalje a nije nista unio za polje editTextTask onda
+        //mu se pokazuje na kraju EditText-a pomocu setError() metode mali crveni uslicnik sa popup porukom "Task required"
+        // i pomocu metode requestFocus() fokus mu i dalje ostaje na editTextTask view-u kako bi ovoga puta unio podatke
         if (sTask.isEmpty()){
             editTextTask.setError("Task required");
             editTextTask.requestFocus();
             return;
         }
 
+        //u ovom prvom slucaju se provjerava ako je korisnik kliknuo dalje a nije nista unio za polje editTextDes onda
+        //mu se pokazuje na kraju EditText-a pomocu setError() metode mali crveni uslicnik sa popup porukom "Desc required"
+        // i pomocu metode requestFocus() fokus mu i dalje ostaje na editTextDesc view-u kako bi ovoga puta unio podatke
         if (sDesc.isEmpty()){
             editTextDesc.setError("Desc required");
             editTextDesc.requestFocus();
             return;
         }
 
+        //u ovom prvom slucaju se provjerava ako je korisnik kliknuo dalje a nije nista unio za polje editTextFinishBy onda
+        //mu se pokazuje na kraju EditText-a pomocu setError() metode mali crveni uslicnik sa popup porukom "Finish by required"
+        // i pomocu metode requestFocus() fokus mu i dalje ostaje na editTextFinishBy view-u kako bi ovoga puta unio podatke
         if (sFinishBy.isEmpty()){
             editTextFinishBy.setError("Finish by required");
             editTextFinishBy.requestFocus();
             return;
         }
 
+        //unutar metode updateTask() koja je zasluzna za to da se azuriraju podaci unutar baze podataka se nalazi i jos jedna
+        //inner(nested) klasa koja nasljeđuje AsyncTask klasu koja je zasluzna za kreiranje background thread-a kako bi se
+        //oslobodio main UI thread od opterecenja kako se aplikacija ne bi crashala.U novijim verzijama Androida postalo je
+        //obavezno da se operacije vezane za bazu podataka obavljaju u background threadu bas zbog toga kako bi se manje
+        //opterecivao UI thread i tako bi se ubrzala aplikacija.Klasa koja nasljeđuje AsnycTask mora implementirati najmanje
+        //jednu metodu a ta metoda je doInBackground() unutar koje definiramo taj "heavy" zadatak koji se mora obaviti u
+        //backgorund thread-u.U nasem slucaju to je pristup bazi podataka i azuriranje baze podataka pomocu Dao metode update()
+        //u nasem slucaju mi smo jos implementirali metodu onPostExecute() kojoj se salju rezultati iz metode doInBackground()
+        //i onda onPostExecute() metoda salje svoje podatke u UI thread kako bi ga azurirala
         class UpdateTask extends AsyncTask<Void,Void,Void>{
 
+            //u sljedecem dijelu koda je definirano kako cemo updejtati podatke unutar baze podataka
+            //setTask() --> ova metoda je setter koju smo definirali unutar Task klase, a da bi ju mogli
+            //              pozvati moramo prvo napraviti objekt od klase Task.prve cetiri linije koda rade
+            //              na nacin da imamo objekt klase Task koji je prazan, a klasa Task ima svoje neke
+            //              atribute koje mi mozemo staviti u taj objekt pomocu setter metoda.Setter metode
+            //              rade na nacin da onu vrijednost koju zelimo predati objektu preko njih moramo
+            //              navesti unutar zagrada.Znaci u nasem slucaju one vrijednosti koje zelimo dati
+            //              objektu su upravo one vrijednosti koje je korisnik unio u ona tri EditText-a
             @Override
             protected Void doInBackground(Void... voids) {
                 task.setTask(sTask);
                 task.setDesc(sDesc);
                 task.setFinishBy(sFinishBy);
                 task.setFinished(checkBoxFinished.isChecked());
+
+                //sljedece tri linije koda su nam zasluzne za updejtanje baze podataka najvise uz pomoc metode
+                //update() koja se nalazi unutar TaskDao interfejsa.Kao argument ovoj metodi predajemo task
+                //objekt koji u sebi ima vrijednosti koje smo mu dali pomocu setter metoda
                 DatabaseClient.getInstance(getApplicationContext()).getAppDatabase()
                         .taskDao()
                         .update(task);
                 return null;
             }
 
+            //ova metoda kao sto smo vec ranije i rekli sluzi da posalje rjesenja koja je dobila doInBackround()
+            //metoda u main UI thread kako bi se on azurirao
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
+
+                //ovdje smo rekli da ce nam se kada se krene izvoditi ova metoda pojaviti Toast poruka na
+                //dnu zaslona s porukom "Updated"
                 Toast.makeText(getApplicationContext(),"Updated",Toast.LENGTH_LONG).show();
                 finish();
+
+                //ova linija koda nam samo govori da ce kada se zavrsi sa updejtanjem baze podataka ova aktivnost
+                //zatvoriti i da ce se otvoriti nova aktivnost i to ona MainActivity
                 startActivity(new Intent(UpdateTaskActivity.this,MainMainActivity.class));
             }
         }
+
+        //sve ono iznad smo smo definirali nas je vodilo do ove naredbe, sve ono gore je zapravo samo definiranje
+        //sto i kako ce se odvijati updejtanje baze podataka, ali jos uvijek jos nista nije upogonjeno, a upravo
+        //to radimo pomocu metode execute(), prvo moramo napraviti objekt od ove klase koja nasljeđuje AsyncTask
+        //i preko tog objekta tek onda pozvati metodu execute() koja ce upogoniti sve
         UpdateTask ut = new UpdateTask();
         ut.execute();
     }
