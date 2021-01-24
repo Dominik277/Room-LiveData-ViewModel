@@ -13,7 +13,7 @@
         <activity android:name=".MrezeIProtokoliActivity" />
         <activity android:name=".ProgramiranjeActivity" />
         <activity android:name=".HardverActivity" />
-        <activity android:name=".MainMainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

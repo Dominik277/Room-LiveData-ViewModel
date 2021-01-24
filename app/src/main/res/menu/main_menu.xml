@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="Programiranje">
+        android:title="Programiranje"
+        android:id="@+id/menu_programiranje">
     </item>
 
     <item
-        android:title="Hardver">
+        android:title="Hardver"
+        android:id="@+id/menu_hardver">
     </item>
 
     <item
-        android:title="Mreže i Protokol">
+        android:title="Mreže i Protokol"
+        android:id="@+id/menu_mrezeiprotokoli">
     </item>
 
     <item
-        android:title="Operativni Sustavi">
+        android:title="Operativni Sustavi"
+        android:id="@+id/menu_operativnisustavi">
     </item>
 </menu>
