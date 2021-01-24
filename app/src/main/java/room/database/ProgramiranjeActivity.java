@@ -10,5 +10,7 @@ public class ProgramiranjeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_programiranje);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Programiranje");
     }
 }

@@ -10,5 +10,7 @@ public class MrezeIProtokoliActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mreze_i_protokoli);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Mreze i Protokoli");
     }
 }
