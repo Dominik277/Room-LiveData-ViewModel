@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomDatabase">
+        <activity android:name=".OperativniSustaviActivity"></activity>
+        <activity android:name=".MrezeIProtokoliActivity" />
+        <activity android:name=".ProgramiranjeActivity" />
+        <activity android:name=".HardverActivity" />
         <activity android:name=".MainMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,7 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
