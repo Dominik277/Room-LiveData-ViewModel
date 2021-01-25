@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomDatabase">
+        <activity android:name=".PiliciActivity"></activity>
+        <activity android:name=".JajaActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.RoomDatabase.NoActionBar">
