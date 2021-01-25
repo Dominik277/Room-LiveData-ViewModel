@@ -9,10 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomDatabase">
-        <activity android:name=".PrihodiIRashodiActivity"></activity>
-        <activity android:name=".ObavijestiActivity" />
-        <activity android:name=".PiliciActivity" />
-        <activity android:name=".JajaActivity" />
+        <activity
+            android:name=".PrihodiIRashodiActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".ObavijestiActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".PiliciActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".JajaActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.RoomDatabase.NoActionBar">

@@ -10,5 +10,8 @@ public class PrihodiIRashodiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prihodi_i_rashodi);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Prihodi i Rashodi");
+
     }
 }

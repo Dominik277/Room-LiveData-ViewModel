@@ -10,5 +10,7 @@ public class ObavijestiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_obavijesti);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Obavijesti");
     }
 }

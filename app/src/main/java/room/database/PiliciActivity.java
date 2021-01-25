@@ -10,5 +10,7 @@ public class PiliciActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pilici);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Pilići");
     }
 }
