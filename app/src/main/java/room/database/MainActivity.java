@@ -50,6 +50,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.pilići){
             startActivity(new Intent(MainActivity.this,PiliciActivity.class));
         }
+        if (id == R.id.obavijesti){
+            startActivity(new Intent(MainActivity.this,ObavijestiActivity.class));
+        }
+        if (id == R.id.prihodi_i_rashodi){
+            startActivity(new Intent(MainActivity.this,PrihodiIRashodiActivity.class));
+        }
         return false;
     }
 }

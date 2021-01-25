@@ -16,6 +16,14 @@
                     android:id="@+id/pilići"
                     android:title="Pilići"
                     android:icon="@drawable/ic_baseline_add_box_24"/>
+                <item
+                    android:id="@+id/obavijesti"
+                    android:title="Obavijesti"
+                    android:icon="@drawable/ic_baseline_add_box_24"/>
+                <item
+                    android:id="@+id/prihodi_i_rashodi"
+                    android:title="Prihodi i Rashodi"
+                    android:icon="@drawable/ic_baseline_add_box_24"/>
             </menu>
         </item>
     </group>
