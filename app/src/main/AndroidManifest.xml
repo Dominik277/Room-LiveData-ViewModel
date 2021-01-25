@@ -10,18 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomDatabase">
         <activity
-            android:name=".OperativniSustaviActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".MrezeIProtokoliActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".ProgramiranjeActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".HardverActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.RoomDatabase.NoActionBar">
             <intent-filter>

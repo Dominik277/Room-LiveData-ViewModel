@@ -6,23 +6,15 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:title="Informatika">
+            android:title="OPG Dorić">
             <menu>
                 <item
-                    android:id="@+id/programiranje"
-                    android:title="Programiranje"
+                    android:id="@+id/jaja"
+                    android:title="Jaja"
                     android:icon="@drawable/ic_baseline_add_box_24"/>
                 <item
-                    android:id="@+id/hadrver"
-                    android:title="Hardver"
-                    android:icon="@drawable/ic_baseline_add_box_24"/>
-                <item
-                    android:id="@+id/mrezeiprotkoli"
-                    android:title="Mreze I Protokoli"
-                    android:icon="@drawable/ic_baseline_add_box_24"/>
-                <item
-                    android:id="@+id/operativniSustavi"
-                    android:title="Operativni Sustavi"
+                    android:id="@+id/pilići"
+                    android:title="Pilići"
                     android:icon="@drawable/ic_baseline_add_box_24"/>
             </menu>
         </item>

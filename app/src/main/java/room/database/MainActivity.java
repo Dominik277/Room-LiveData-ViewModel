@@ -44,18 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.programiranje){
-            startActivity(new Intent(MainActivity.this, ProgramiranjeActivity.class));
-        }
-        if (id == R.id.hadrver){
-            startActivity(new Intent(MainActivity.this, HardverActivity.class));
-        }
-        if (id == R.id.mrezeiprotkoli){
-            startActivity(new Intent(MainActivity.this, MrezeIProtokoliActivity.class));
-        }
-        if (id == R.id.operativniSustavi){
-            startActivity(new Intent(MainActivity.this, OperativniSustaviActivity.class));
-        }
+
         return false;
     }
 }
