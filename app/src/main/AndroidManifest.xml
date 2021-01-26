@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomDatabase">
         <activity
-            android:name=".PrihodiIRashodiActivity"
+            android:name=".NavigationDrawer.PrihodiIRashodiActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".ObavijestiActivity"
+            android:name=".NavigationDrawer.ObavijestiActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".PiliciActivity"
+            android:name=".NavigationDrawer.PiliciActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".JajaActivity"
+            android:name=".NavigationDrawer.JajaActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"

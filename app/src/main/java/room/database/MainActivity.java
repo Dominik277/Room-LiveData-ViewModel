@@ -13,6 +13,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import room.database.NavigationDrawer.JajaActivity;
+import room.database.NavigationDrawer.ObavijestiActivity;
+import room.database.NavigationDrawer.PiliciActivity;
+import room.database.NavigationDrawer.PrihodiIRashodiActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -45,16 +49,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.jaja){
-            startActivity(new Intent(MainActivity.this,JajaActivity.class));
+            startActivity(new Intent(MainActivity.this, JajaActivity.class));
         }
         if (id == R.id.pilići){
-            startActivity(new Intent(MainActivity.this,PiliciActivity.class));
+            startActivity(new Intent(MainActivity.this, PiliciActivity.class));
         }
         if (id == R.id.obavijesti){
-            startActivity(new Intent(MainActivity.this,ObavijestiActivity.class));
+            startActivity(new Intent(MainActivity.this, ObavijestiActivity.class));
         }
         if (id == R.id.prihodi_i_rashodi){
-            startActivity(new Intent(MainActivity.this,PrihodiIRashodiActivity.class));
+            startActivity(new Intent(MainActivity.this, PrihodiIRashodiActivity.class));
         }
         return false;
     }

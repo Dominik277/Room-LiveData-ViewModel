@@ -1,8 +1,9 @@
-package room.database;
-
-import androidx.appcompat.app.AppCompatActivity;
+package room.database.NavigationDrawer;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import room.database.R;
 
 public class PrihodiIRashodiActivity extends AppCompatActivity {
 
