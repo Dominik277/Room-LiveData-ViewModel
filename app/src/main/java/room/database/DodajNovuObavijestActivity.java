@@ -10,5 +10,7 @@ public class DodajNovuObavijestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dodaj_novu_obavijest);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Dodaj novu obavijest!");
     }
 }

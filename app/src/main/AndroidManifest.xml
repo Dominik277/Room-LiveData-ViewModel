@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomDatabase">
-        <activity android:name=".DodajNovuObavijestActivity"></activity>
+        <activity
+            android:name=".DodajNovuObavijestActivity"
+            android:parentActivityName=".NavigationDrawer.ObavijestiActivity"/>
         <activity
             android:name=".NavigationDrawer.PrihodiIRashodiActivity"
             android:parentActivityName=".MainActivity" />

@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp"
     tools:context=".DodajNovuObavijestActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Dodajte novu obavijest!"
+        android:layout_gravity="center_horizontal"
+        android:textSize="28dp"
+        android:textColor="#000"/>
+    <EditText
+        android:id="@+id/obavijest_zaKoga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Za koga?"/>
+    <EditText
+        android:id="@+id/obavijest_doKada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Do kada obaviti?"/>
+    <EditText
+        android:id="@+id/obavijest_datumObjavljivanja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Datum i vrijeme objavljivanja"/>
+    <EditText
+        android:id="@+id/obavijest_obavijest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:hint="Ovdje upišite obavijest/zadatak"
+        android:gravity="start"/>
+    <Button
+        android:id="@+id/gumbObjaviObavijest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Objavi"
+        android:textSize="22dp"/>
+
+</LinearLayout>
