@@ -35,8 +35,8 @@ public class ObavijestiActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
         modelExampleClasses = new ArrayList<>();
-        modelExampleClasses.add(new ModelExampleClass("","","","",""));
-        modelExampleClasses.add(new ModelExampleClass("","","","",""));
+        modelExampleClasses.add(new ModelExampleClass("Odvesti auto u garaži i naložiti vatru.","Dražen","Dominika","19:30","20:45"));
+        modelExampleClasses.add(new ModelExampleClass("Ugasiti vešmašinu prije spavanja","Jasna","Leonardu","22:43","23:30"));
         modelExampleClasses.add(new ModelExampleClass("","","","",""));
         modelExampleClasses.add(new ModelExampleClass("","","","",""));
         modelExampleClasses.add(new ModelExampleClass("","","","",""));
