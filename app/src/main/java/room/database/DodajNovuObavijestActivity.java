@@ -15,7 +15,6 @@ public class DodajNovuObavijestActivity extends AppCompatActivity {
     EditText editTextObavijestZaKoga;
     EditText editTextObavijestDoKada;
     EditText editTextObavijestVrijemeObjavljivanja;
-    EditText editTextObavijestDatum;
     EditText editTextObavijestObavijest;
     EditText editTextObavijestAutor;
     Button gumbObjaviObavijest;
@@ -30,7 +29,6 @@ public class DodajNovuObavijestActivity extends AppCompatActivity {
         editTextObavijestZaKoga = findViewById(R.id.obavijest_zaKoga);
         editTextObavijestDoKada = findViewById(R.id.obavijest_doKada);
         editTextObavijestVrijemeObjavljivanja = findViewById(R.id.obavijest_vrijemeObajvljivanja);
-        editTextObavijestDatum = findViewById(R.id.obavijest_datumObjavljivanja);
         editTextObavijestObavijest = findViewById(R.id.obavijest_obavijest);
         editTextObavijestAutor = findViewById(R.id.obavijest_autor);
         gumbObjaviObavijest = findViewById(R.id.gumbObjaviObavijest);

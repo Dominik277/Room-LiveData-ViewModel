@@ -37,10 +37,10 @@ public class ObavijestiActivity extends AppCompatActivity {
         modelExampleClasses = new ArrayList<>();
         modelExampleClasses.add(new ModelExampleClass("Odvesti auto u garaži i naložiti vatru.","Dražen","Dominika","19:30","20:45"));
         modelExampleClasses.add(new ModelExampleClass("Ugasiti vešmašinu prije spavanja","Jasna","Leonardu","22:43","23:30"));
-        modelExampleClasses.add(new ModelExampleClass("","","","",""));
-        modelExampleClasses.add(new ModelExampleClass("","","","",""));
-        modelExampleClasses.add(new ModelExampleClass("","","","",""));
-        modelExampleClasses.add(new ModelExampleClass("","","","",""));
+        modelExampleClasses.add(new ModelExampleClass("Pokositi travu ispred i iza kuće","Dražen","Dominik","13:42","15:30"));
+        modelExampleClasses.add(new ModelExampleClass("Usisati auto i oprati ga","Dominik","Leonardu","15:54","17:00"));
+        modelExampleClasses.add(new ModelExampleClass("Zapaliti granje iza kuće i stare kartonske vreće","Dominik","Jasnu","14:43","16:00"));
+        modelExampleClasses.add(new ModelExampleClass("Smiksati smjesu za tijesto i napraviti kolač","Leonarda","Jasnu","9:44","11:00"));
 
         Adapter adapter = new Adapter(this,modelExampleClasses);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this
