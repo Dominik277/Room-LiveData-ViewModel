@@ -41,7 +41,7 @@
                 android:layout_below="@+id/textViewAutor"
                 android:text="Za koga: "/>
             <TextView
-                android:id="@+id/textViewVrijemeOjavljivanja"
+                android:id="@+id/textViewObjavljeno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_below="@+id/textViewVrijemeOjavljivanja"
+                android:layout_below="@+id/textViewObjavljeno"
                 android:text="Do kada: "/>
         </RelativeLayout>
 
