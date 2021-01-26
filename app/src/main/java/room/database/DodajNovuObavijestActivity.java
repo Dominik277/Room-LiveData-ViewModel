@@ -33,6 +33,8 @@ public class DodajNovuObavijestActivity extends AppCompatActivity {
         editTextObavijestAutor = findViewById(R.id.obavijest_autor);
         gumbObjaviObavijest = findViewById(R.id.gumbObjaviObavijest);
 
+
+
         gumbObjaviObavijest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,13 +42,44 @@ public class DodajNovuObavijestActivity extends AppCompatActivity {
                 String doKada = editTextObavijestDoKada.getText().toString();
                 String autor = editTextObavijestAutor.getText().toString();
 
-                Toast.makeText(DodajNovuObavijestActivity.this,autor
-                        + " uspješno ste unijeli obavijest za "
-                        + zaKoga
-                        + " , a on to mora obaviti do "
-                        + doKada
-                        + "."
-                        ,Toast.LENGTH_LONG).show();
+                if (editTextObavijestZaKoga.getText().toString().isEmpty()){
+                    editTextObavijestZaKoga.setError("Ovo polje mora biti ispunjeno!");
+                }
+
+                if (editTextObavijestDoKada.getText().toString().isEmpty()){
+                    editTextObavijestDoKada.setError("Ovo polje mora biti ispunjeno!");
+                }
+
+                if (editTextObavijestVrijemeObjavljivanja.getText().toString().isEmpty()){
+                    editTextObavijestVrijemeObjavljivanja.setError("Ovo polje mora biti ispunjeno!");
+                }
+
+                if (editTextObavijestObavijest.getText().toString().isEmpty()){
+                    editTextObavijestObavijest.setError("Ovo polje mora biti ispunjeno!");
+                }
+
+                if (editTextObavijestAutor.getText().toString().isEmpty()){
+                    editTextObavijestAutor.setError("Ovo polje mora biti ispunjeno!");
+                }
+
+                if (editTextObavijestZaKoga.getText().toString().isEmpty() ||
+                    editTextObavijestDoKada.getText().toString().isEmpty() ||
+                    editTextObavijestVrijemeObjavljivanja.getText().toString().isEmpty() ||
+                    editTextObavijestObavijest.getText().toString().isEmpty() ||
+                    editTextObavijestAutor.getText().toString().isEmpty()){
+
+                    Toast.makeText(DodajNovuObavijestActivity.this,"Nešto je pošlo po zlu!"
+                                    ,Toast.LENGTH_LONG).show();
+
+                }else {
+                    Toast.makeText(DodajNovuObavijestActivity.this, autor
+                                    + " uspješno ste unijeli obavijest za "
+                                    + zaKoga
+                                    + " , a on to mora obaviti do "
+                                    + doKada
+                                    + "."
+                            , Toast.LENGTH_LONG).show();
+                }
             }
         });
 
