@@ -9,20 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomDatabase">
+        <activity android:name=".DodajNovuObavijestActivity"></activity>
         <activity
             android:name=".NavigationDrawer.PrihodiIRashodiActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".NavigationDrawer.ObavijestiActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".NavigationDrawer.PiliciActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".NavigationDrawer.JajaActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.RoomDatabase.NoActionBar"/>
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.RoomDatabase.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.RoomDatabase.NoActionBar">
