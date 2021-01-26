@@ -30,11 +30,17 @@
         android:layout_marginTop="20dp"
         android:hint="Do kada obaviti?"/>
     <EditText
+        android:id="@+id/obavijest_vrijemeObajvljivanja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Vrijeme objavljivanja"/>
+    <EditText
         android:id="@+id/obavijest_datumObjavljivanja"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Datum i vrijeme objavljivanja"/>
+        android:hint="Datum objavljivanja"/>
     <EditText
         android:id="@+id/obavijest_obavijest"
         android:layout_width="match_parent"

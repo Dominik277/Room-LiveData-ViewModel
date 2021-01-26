@@ -14,6 +14,7 @@ public class DodajNovuObavijestActivity extends AppCompatActivity {
 
     EditText editTextObavijestZaKoga;
     EditText editTextObavijestDoKada;
+    EditText editTextObavijestVrijemeObjavljivanja;
     EditText editTextObavijestDatum;
     EditText editTextObavijestObavijest;
     EditText editTextObavijestAutor;
@@ -28,6 +29,7 @@ public class DodajNovuObavijestActivity extends AppCompatActivity {
 
         editTextObavijestZaKoga = findViewById(R.id.obavijest_zaKoga);
         editTextObavijestDoKada = findViewById(R.id.obavijest_doKada);
+        editTextObavijestVrijemeObjavljivanja = findViewById(R.id.obavijest_vrijemeObajvljivanja);
         editTextObavijestDatum = findViewById(R.id.obavijest_datumObjavljivanja);
         editTextObavijestObavijest = findViewById(R.id.obavijest_obavijest);
         editTextObavijestAutor = findViewById(R.id.obavijest_autor);
@@ -38,7 +40,6 @@ public class DodajNovuObavijestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String zaKoga = editTextObavijestZaKoga.getText().toString();
                 String doKada = editTextObavijestDoKada.getText().toString();
-                String datum = editTextObavijestDatum.getText().toString();
                 String autor = editTextObavijestAutor.getText().toString();
 
                 Toast.makeText(DodajNovuObavijestActivity.this,autor
@@ -46,6 +47,7 @@ public class DodajNovuObavijestActivity extends AppCompatActivity {
                         + zaKoga
                         + " , a on to mora obaviti do "
                         + doKada
+                        + "."
                         ,Toast.LENGTH_LONG).show();
             }
         });
