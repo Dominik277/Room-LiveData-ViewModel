@@ -1,4 +1,4 @@
-package room.database.Room;
+package room.database.RoomObavijesti;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
