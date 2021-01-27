@@ -10,7 +10,7 @@ import androidx.room.Query;
 @Dao
 public interface DaoObavijesti {
 
-    @Query("SELECT * FROM ObavijestiModel")
+    @Query("SELECT * FROM obavijesti")
     List<ObavijestiModel> getAll();
 
     @Insert
