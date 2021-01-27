@@ -6,9 +6,11 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 import room.database.RoomObavijesti.DaoObavijesti;
 import room.database.RoomObavijesti.ObavijestiModel;
 
@@ -36,5 +38,23 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
+
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+
+            databaseWriteExecutor.execute(() -> {
+                DaoObavijesti dao = INSTANCE.daoObavijesti();
+                dao.deleteAll();
+
+                ObavijestiModel model = new ObavijestiModel(1,"Pokositi travu","Dražen","Dominika","19:45","19:00");
+                dao.insert(model);
+                ObavijestiModel model1 = new ObavijestiModel(2,"Oprati auto","Jasna","Leonardu","14:45","13:15");
+                dao.insert(model1);
+            });
+        }
+    };
 
 }

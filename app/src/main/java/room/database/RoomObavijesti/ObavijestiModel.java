@@ -27,4 +27,12 @@ public class ObavijestiModel {
     @ColumnInfo(name = "objavljeno")
     public String objavljeno;
 
+    public ObavijestiModel(int id, String obavijest, String autor, String zaKoga, String doKada, String objavljeno) {
+        this.id = id;
+        this.obavijest = obavijest;
+        this.autor = autor;
+        this.zaKoga = zaKoga;
+        this.doKada = doKada;
+        this.objavljeno = objavljeno;
+    }
 }
